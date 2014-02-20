@@ -42,6 +42,7 @@ var IPython = (function (IPython) {
         this.rendered = false;
         this.mode = 'command';
         this.metadata = {};
+        this.notebook = options.notebook;
         // load this from metadata later ?
         this.user_highlight = 'auto';
         this.cm_config = options.cm_config;

@@ -697,14 +697,14 @@ var IPython = (function (IPython) {
 
         if (ncells === 0 || this.is_valid_cell_index(index) || index === ncells) {
             if (type === 'code') {
-                cell = new IPython.CodeCell(this.kernel);
+                cell = new IPython.CodeCell(this.kernel, {'notebook': this});
                 cell.set_input_prompt();
             } else if (type === 'markdown') {
-                cell = new IPython.MarkdownCell();
+                cell = new IPython.MarkdownCell({'notebook': this});
             } else if (type === 'raw') {
-                cell = new IPython.RawCell();
+                cell = new IPython.RawCell({'notebook': this});
             } else if (type === 'heading') {
-                cell = new IPython.HeadingCell();
+                cell = new IPython.HeadingCell({'notebook': this});
             }
 
             if(this._insert_element_at_index(cell.element,index)) {
