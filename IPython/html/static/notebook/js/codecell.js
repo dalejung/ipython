@@ -189,7 +189,14 @@ var IPython = (function (IPython) {
      *  @method handle_codemirror_keyevent
      */
     CodeCell.prototype.handle_codemirror_keyevent = function (editor, event) {
+        var ret = this._handle_codemirror_keyevent(editor, event);
+        if (ret != null){
+          return ret;
+        }
+        return false;
+    },
 
+    CodeCell.prototype._handle_codemirror_keyevent = function (editor, event) {
         var that = this;
         // whatever key is pressed, first, cancel the tooltip request before
         // they are sent, and remove tooltip if any, except for tab again
@@ -287,9 +294,9 @@ var IPython = (function (IPython) {
         } else {
             // keypress/keyup also trigger on TAB press, and we don't want to
             // use those to disable tab completion.
-            return false;
+            return null;
         }
-        return false;
+        return null;
     };
 
     // Kernel related calls.
