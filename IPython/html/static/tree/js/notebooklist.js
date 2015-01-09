@@ -193,10 +193,10 @@ define([
             if (type_order[a['type']] > type_order[b['type']]) {
                 return 1;
             }
-            if (a['name'] < b['name']) {
+            if (a['last_modified'] > b['last_modified']) {
                 return -1;
             }
-            if (a['name'] > b['name']) {
+            if (a['last_modified'] < b['last_modified']) {
                 return 1;
             }
             return 0;
