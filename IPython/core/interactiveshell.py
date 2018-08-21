@@ -2820,9 +2820,6 @@ class InteractiveShell(SingletonConfigurable):
         except StopIteration as exc:
             return exc.value
 
-        if isinstance(interactivity, ExecutionResult):
-            return interactivity
-
         if interactivity == 'async':
             return self.loop_runner(coro)
         return _pseudo_sync_runner(coro)
